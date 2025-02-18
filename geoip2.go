@@ -251,7 +251,7 @@ func (m GeoIP2) ServeHTTP(w http.ResponseWriter, r *http.Request, next caddyhttp
 			}
 
 			//country
-			repl.Set("geoip2.country_code", record.Country.ISOCode)
+			repl.Set("geoip2.country_code", strings.ToLower(record.Country.ISOCode))
 
 			for key, element := range record.Country.Names {
 				repl.Set("geoip2.country_names_"+key, element)
